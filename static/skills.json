@@ -1,0 +1,31 @@
+import Email from "@/public/icons/email";
+import Github from "@/public/icons/github";
+import LinkedIn from "@/public/icons/linkedin";
+import Logo from "@/public/icons/logo";
+
+[
+  {
+    "name": "Mysql",
+    "logo": "EMAIL"
+  },
+  {
+    "name": "NodeJs",
+    "logo": "GITHUb"
+  },
+  {
+    "name": "ExpressJs",
+    "logo": ""
+  },
+  {
+    "name": "NextJs",
+    "logo": ""
+  },
+  {
+    "name": "PHP",
+    "logo": ""
+  },
+  {
+    "name": "React",
+    "logo": ""
+  }
+]
