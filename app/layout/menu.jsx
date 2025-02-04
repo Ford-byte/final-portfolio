@@ -103,9 +103,15 @@ export default function Menu() {
                   )
                 )}
               </section>
-            </div>
-            <div className="z-[10]">
-              <ChevronUp className="size-[40px] pointer" onClick={toggleMenu} />
+              <div
+                className="z-[10] -translate-y-[100%] w-full flex justify-center bg-gray-500/20 py-[6px]"
+                onClick={toggleMenu}
+              >
+                <ChevronUp
+                  className="size-[40px] pointer "
+                  onClick={toggleMenu}
+                />
+              </div>
             </div>
           </div>
         </div>

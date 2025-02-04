@@ -1,8 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
 import useLocalStore from "../store/localStore";
-
-import BgBanner from "@/public/icons/bgBanner";
 import Email from "@/public/icons/email";
 import Github from "@/public/icons/github";
 import LinkedIn from "@/public/icons/linkedin";
@@ -39,7 +37,7 @@ export default function Banner() {
       id="Home"
       ref={projectRef}
     >
-      <div className="center items-center min-h-[700px] font-poppins">
+      <div className="center items-center min-h-[500px] lg:min-h-[700px] font-poppins">
         <div className="container px-[16px]">
           <div className="flex justify-center w-full lg:justify-between">
             <div className="flex flex-col gap-4 gap-y-[24px] justify-center">
@@ -70,7 +68,7 @@ export default function Banner() {
               </div>
             </div>
             <div className="lg:flex hidden">
-              <Logo className="size-[350px] text" />
+              <Logo className="size-[350px] text " />
             </div>
           </div>
         </div>
