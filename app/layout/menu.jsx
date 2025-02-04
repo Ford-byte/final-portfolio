@@ -5,21 +5,19 @@ import useLocalStore from "../store/localStore";
 import Logo from "@/public/icons/logo";
 import MenuBar from "@/public/icons/menuBar";
 import ChevronUp from "@/public/icons/chevronUp";
-import Link from "next/link";
 import ModeToggle from "./modeToggle";
 
 export default function Menu() {
   const { theme, setTheme, active, setActive } = useLocalStore();
   const [isOpen, setOpen] = useState(false);
-  const [isHydrated, setIsHydrated] = useState(false); // Add hydrated state to prevent mismatch
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    setIsHydrated(true); // Set hydration to true after initial render
+    setIsHydrated(true);
   }, []);
 
   useEffect(() => {
     if (isHydrated) {
-      // Only run when hydrated
       document.documentElement.classList.remove("light", "dark");
       document.documentElement.classList.add(theme);
       document.documentElement.style.setProperty(
@@ -31,7 +29,7 @@ export default function Menu() {
         theme === "dark" ? "#ededed" : "#171717"
       );
     }
-  }, [theme, isHydrated]); // Add isHydrated as a dependency
+  }, [theme, isHydrated]);
 
   const toggleMenu = () => {
     setOpen(!isOpen);
@@ -41,10 +39,9 @@ export default function Menu() {
     <div className="center">
       <div className="container">
         <div className="flex justify-between items-center">
-          <a href={`#Home`}>
-            <Logo className="w-[40px] h-[40px]" />
+          <a href="#Home" aria-label="Go to homepage">
+            <Logo className="w-[40px] h-[40px]" alt="Go to homepage" />
           </a>
-          {/* Desktop Navigation */}
           <section id="menu" className="hidden lg:flex gap-2  text-[20px]">
             {["Home", "About", "Skills", "Projects", "Contact"].map(
               (section) => (
@@ -61,7 +58,6 @@ export default function Menu() {
               )
             )}
           </section>
-          {/* Icons */}
           <div className="flex gap-[12px]">
             <div className="flex lg:hidden items-center ">
               <MenuBar className="size-[30px]" onClick={toggleMenu} />
@@ -74,7 +70,6 @@ export default function Menu() {
             </span>
           </div>
         </div>
-        {/* Mobile Navigation */}
         <div
           className={`lg:hidden justify-center fixed inset-0 z-[1001] w-full px-[16px] transition-all duration-500 ${
             isOpen ? "animate-in-top" : "animate-out-top hidden"
@@ -108,10 +103,10 @@ export default function Menu() {
                 className="z-[10] -translate-y-[100%] w-full flex justify-center bg-gray-500/20 py-[6px]"
                 onClick={toggleMenu}
               >
-                {/* <ChevronUp
+                <ChevronUp
                   className="size-[40px] pointer "
                   onClick={toggleMenu}
-                /> */}
+                />
               </div>
             </div>
           </div>
