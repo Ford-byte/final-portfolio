@@ -6,7 +6,8 @@ const About = dynamic(() => import("./blocks/About.jsx"), { ssr: false });
 const Skills = dynamic(() => import("./blocks/Skills.jsx"), { ssr: false });
 const Projects = dynamic(() => import("./blocks/Projects.jsx"), { ssr: false });
 const Contact = dynamic(() => import("./blocks/Contact.jsx"), { ssr: false });
-export default function Home() { 
+const Footer = dynamic(() => import("./layout/footer.jsx"), { ssr: false });
+export default function Home() {
   return (
     <>
       <Banner />
@@ -14,6 +15,7 @@ export default function Home() {
       <Skills />
       <Projects />
       <Contact />
+      <Footer />
     </>
   );
 }

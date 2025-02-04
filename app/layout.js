@@ -1,5 +1,4 @@
 import "./globals.css";
-import Footer from "./layout/footer";
 import Header from "./layout/header";
 export const metadata = {
   title: "ford-folio",
@@ -12,7 +11,6 @@ export default function RootLayout({ children }) {
       <body>
         <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );
