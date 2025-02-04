@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="container py-[87px]">
             <div className="grid gap-y-[24px] lg:grid-cols-3">
               <div className="center flex-col items-center gap-y-[22px]">
-                <div>
+                {/* <div>
                   <Link href="c.iyac123@gmail.com">Gmail</Link>
                 </div>
                 <div>
@@ -19,13 +19,13 @@ export default function Footer() {
                   <Link href="linkedin.com/in/iyac-clifford-jay-999071346/">
                     LinkedIn
                   </Link>
-                </div>
+                </div> */}
               </div>
               <div className="items-center justify-center lg:flex hidden">
                 <Logo className={`size-24`} />
               </div>
               <div className="center flex-col items-center gap-y-[22px]">
-                <div>
+                {/* <div>
                   <Link href="c.iyac123@gmail.com">Gmail</Link>
                 </div>
                 <div>
@@ -35,7 +35,7 @@ export default function Footer() {
                   <Link href="linkedin.com/in/iyac-clifford-jay-999071346/">
                     LinkedIn
                   </Link>
-                </div>
+                </div> */}
               </div>
               <div className="items-center justify-center lg:hidden flex">
                 <Logo className={`size-24`} />

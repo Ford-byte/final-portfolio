@@ -40,6 +40,7 @@ export default function Contact() {
                 width={1280}
                 height={500}
                 className="h-[400px] lg:min-h-[500px] w-full object-cover "
+                loading="lazy"
               />
               <div className="flex flex-col gap-y-[24px] lg:max-w-[500px] px-[24px]">
                 <h2 className="text-[32px]">Hello</h2>

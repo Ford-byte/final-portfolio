@@ -1,29 +1,37 @@
 "use client";
 import { useEffect, useState } from "react";
-import Sun from "@/public/icons/sun";
-import Moon from "@/public/icons/moon";
+
 import useLocalStore from "../store/localStore";
 import Logo from "@/public/icons/logo";
 import MenuBar from "@/public/icons/menuBar";
 import ChevronUp from "@/public/icons/chevronUp";
 import Link from "next/link";
+import ModeToggle from "./modeToggle";
 
 export default function Menu() {
   const { theme, setTheme, active, setActive } = useLocalStore();
   const [isOpen, setOpen] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false); // Add hydrated state to prevent mismatch
 
   useEffect(() => {
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-    document.documentElement.style.setProperty(
-      "--background",
-      theme === "dark" ? "#0a0a0a" : "#ffffff"
-    );
-    document.documentElement.style.setProperty(
-      "--foreground",
-      theme === "dark" ? "#ededed" : "#171717"
-    );
-  }, [theme]);
+    setIsHydrated(true); // Set hydration to true after initial render
+  }, []);
+
+  useEffect(() => {
+    if (isHydrated) {
+      // Only run when hydrated
+      document.documentElement.classList.remove("light", "dark");
+      document.documentElement.classList.add(theme);
+      document.documentElement.style.setProperty(
+        "--background",
+        theme === "dark" ? "#0a0a0a" : "#ffffff"
+      );
+      document.documentElement.style.setProperty(
+        "--foreground",
+        theme === "dark" ? "#ededed" : "#171717"
+      );
+    }
+  }, [theme, isHydrated]); // Add isHydrated as a dependency
 
   const toggleMenu = () => {
     setOpen(!isOpen);
@@ -37,10 +45,7 @@ export default function Menu() {
             <Logo className="w-[40px] h-[40px]" />
           </a>
           {/* Desktop Navigation */}
-          <section
-            id="menu"
-            className="hidden lg:flex gap-2 font-poppins text-[20px]"
-          >
+          <section id="menu" className="hidden lg:flex gap-2  text-[20px]">
             {["Home", "About", "Skills", "Projects", "Contact"].map(
               (section) => (
                 <a
@@ -65,11 +70,7 @@ export default function Menu() {
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="px-[10px] py-[10px] rounded-full rotate-out-center"
             >
-              {theme === "light" ? (
-                <Sun className="size-[30px] rotate-in-center" />
-              ) : (
-                <Moon className="size-[30px] rotate-in-center" />
-              )}
+              <ModeToggle />
             </span>
           </div>
         </div>
@@ -83,7 +84,7 @@ export default function Menu() {
             <div className="container background h-[50vh]">
               <section
                 id="menu"
-                className="gap-2 font-poppins text-[20px] flex flex-col translate-y-[10%] h-full"
+                className="gap-2  text-[20px] flex flex-col translate-y-[10%] h-full"
               >
                 {["Home", "About", "Skills", "Projects", "Contact"].map(
                   (section) => (
@@ -107,10 +108,10 @@ export default function Menu() {
                 className="z-[10] -translate-y-[100%] w-full flex justify-center bg-gray-500/20 py-[6px]"
                 onClick={toggleMenu}
               >
-                <ChevronUp
+                {/* <ChevronUp
                   className="size-[40px] pointer "
                   onClick={toggleMenu}
-                />
+                /> */}
               </div>
             </div>
           </div>

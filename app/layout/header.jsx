@@ -1,8 +1,9 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import Menu from "./menu";
 
-const Menu = dynamic(() => import("./menu"), { ssr: false });
+// import dynamic from "next/dynamic";
+// const Menu = dynamic(() => import("./menu"), { ssr: false });
 
 export default function Header() {
   return (

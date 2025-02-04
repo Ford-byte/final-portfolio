@@ -37,7 +37,7 @@ export default function Banner() {
       id="Home"
       ref={projectRef}
     >
-      <div className="center items-center min-h-[500px] lg:min-h-[700px] font-poppins">
+      <div className="center items-center min-h-[500px] lg:min-h-[700px] ">
         <div className="container px-[16px]">
           <div className="flex justify-center w-full lg:justify-between">
             <div className="flex flex-col gap-4 gap-y-[24px] justify-center">
