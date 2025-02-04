@@ -1,46 +1,77 @@
+"use client";
+import { useEffect, useRef } from "react";
+import useLocalStore from "../store/localStore";
+
 import BgBanner from "@/public/icons/bgBanner";
 import Email from "@/public/icons/email";
 import Github from "@/public/icons/github";
 import LinkedIn from "@/public/icons/linkedin";
 import Logo from "@/public/icons/logo";
+
 export default function Banner() {
+  const { setActive } = useLocalStore();
+  const projectRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setActive("Home");
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (projectRef.current) {
+      observer.observe(projectRef.current);
+    }
+
+    return () => {
+      if (projectRef.current) {
+        observer.unobserve(projectRef.current);
+      }
+    };
+  }, [setActive]);
+
   return (
-    <div className="relative text-white h-[99vh]">
-      <div className="absolute top-0 w-full h-full">
-        <BgBanner className={``} />
-      </div>
-      <div className="absolute top-0 left-0 z-20 center items-center h-screen font-poppins">
-        <div className="container">
-          <div className="flex gap-12">
-            <div className="flex flex-col gap-4 justify-center">
+    <div
+      className="relative background h-full slide-in-top"
+      id="Home"
+      ref={projectRef}
+    >
+      <div className="center items-center min-h-[700px] font-poppins">
+        <div className="container px-[16px]">
+          <div className="flex justify-center w-full lg:justify-between">
+            <div className="flex flex-col gap-4 gap-y-[24px] justify-center">
               <section
                 id="intro"
-                className="text-[72px] flex flex-col gap-2 tracking-[10px] leading-[95px]">
+                className="text-[clamp(22px,7vw,52px)] lg:text-[clamp(52px,2vw,72px)] flex flex-col gap-2 tracking-[5px] lg:tracking-[10px] leading-[clamp(52px,1vw,72px)] lg:leading-[clamp(72px,5vw,95px)]"
+              >
                 <span>
                   HI, I'm <span className="text-primary">Clifford</span>,
                 </span>
                 <span>Web Developer. |</span>
               </section>
-              <span id="button" className="">
-                <button className="px-[54px] py-[14px] text-[24px] pointer bg-primary text-white w-fit h-fit rounded-lg">
+              <span id="button">
+                <button className="px-[24px] py-[14px] lg:px-[54px] lg:py-[14px] text-[16px] lg:text-[24px] pointer bg-primary text-white w-fit h-fit rounded-lg">
                   Contact
                 </button>
               </span>
+              <div className="flex gap-[24px]">
+                <span>
+                  <LinkedIn />
+                </span>
+                <span>
+                  <Github />
+                </span>
+                <span>
+                  <Email />
+                </span>
+              </div>
             </div>
-            <div>
-              <Logo className={`size-[400px]`} fill={`white`} />
+            <div className="lg:flex hidden">
+              <Logo className="size-[350px] text" />
             </div>
-          </div>
-          <div className="absolute bottom-12 flex gap-4">
-            <span>
-              <LinkedIn />
-            </span>
-            <span>
-              <Github />
-            </span>
-            <span>
-              <Email />
-            </span>
           </div>
         </div>
       </div>

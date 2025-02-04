@@ -1,74 +1,115 @@
 "use client";
-import { useState } from "react";
-import Header from "@/public/icons/header";
-import Logo from "@/public/icons/logo";
+import { useEffect, useState } from "react";
 import Sun from "@/public/icons/sun";
+import Moon from "@/public/icons/moon";
+import useLocalStore from "../store/localStore";
+import Logo from "@/public/icons/logo";
+import MenuBar from "@/public/icons/menuBar";
+import ChevronUp from "@/public/icons/chevronUp";
+import Link from "next/link";
 
 export default function Menu() {
-  const [activeSection, setActiveSection] = useState("");
+  const { theme, setTheme, active, setActive } = useLocalStore();
+  const [isOpen, setOpen] = useState(false);
 
-  const handleSectionClick = (section) => {
-    setActiveSection(section);
+  useEffect(() => {
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(theme);
+    document.documentElement.style.setProperty(
+      "--background",
+      theme === "dark" ? "#0a0a0a" : "#ffffff"
+    );
+    document.documentElement.style.setProperty(
+      "--foreground",
+      theme === "dark" ? "#ededed" : "#171717"
+    );
+  }, [theme]);
+
+  const toggleMenu = () => {
+    setOpen(!isOpen);
   };
 
   return (
-    <>
-      <div className="fixed w-full z-[100]">
-        <Header className="fixed bg-white bg-opacity-[50%] z-[1]" />
-        <section id="header" className="center fixed z-[100]">
-          <div className="relative h-[100px] container">
-            <div className="flex justify-between items-center h-full">
-              <section id="logo">
-                <Logo fill={`black`}/>
-              </section>
+    <div className="center">
+      <div className="container">
+        <div className="flex justify-between items-center">
+          <Link href={`#Home`}>
+            <Logo className="w-[40px] h-[40px]" />
+          </Link>
+          {/* Desktop Navigation */}
+          <section
+            id="menu"
+            className="hidden lg:flex gap-2 font-poppins text-[20px]"
+          >
+            {["Home", "About", "Skills", "Projects", "Contact"].map(
+              (section) => (
+                <a
+                  key={section}
+                  href={"#" + section}
+                  className={`py-[10px] px-[22px] rounded-[10px] pointer scroll-smooth ${
+                    active === section ? "bg-red-500 text-white" : ""
+                  }`}
+                  onClick={() => setActive(section)}
+                >
+                  {section}
+                </a>
+              )
+            )}
+          </section>
+          {/* Icons */}
+          <div className="flex gap-[12px]">
+            <div className="flex lg:hidden items-center ">
+              <MenuBar className="size-[30px]" onClick={toggleMenu} />
+            </div>
+            <button
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="px-[10px] py-[10px] rounded-full rotate-out-center"
+            >
+              {theme === "light" ? (
+                <Sun className="size-[30px] rotate-in-center" />
+              ) : (
+                <Moon className="size-[30px] rotate-in-center" />
+              )}
+            </button>
+          </div>
+        </div>
+        {/* Mobile Navigation */}
+        <div
+          className={`lg:hidden justify-center fixed inset-0 z-[1001] w-full px-[16px] transition-all duration-500 ${
+            isOpen ? "animate-in-top" : "animate-out-top hidden"
+          }`}
+        >
+          <div className="w-full h-full flex flex-col items-center gap-y-[12px]">
+            <div className="container background h-[50vh]">
               <section
                 id="menu"
-                className="flex gap-2 font-poppins text-[20px]">
-                <span
-                  className={`py-[10px] px-[22px] rounded-[10px] pointer ${
-                    activeSection === "Home" ? "bg-red-500 text-white " : ""
-                  }`}
-                  onClick={() => handleSectionClick("Home")}>
-                  Home
-                </span>
-                <span
-                  className={`py-[10px] px-[22px] rounded-[10px] pointer ${
-                    activeSection === "About" ? "bg-red-500 text-white" : ""
-                  }`}
-                  onClick={() => handleSectionClick("About")}>
-                  About
-                </span>
-                <span
-                  className={`py-[10px] px-[22px] rounded-[10px] pointer ${
-                    activeSection === "Skills" ? "bg-red-500 text-white" : ""
-                  }`}
-                  onClick={() => handleSectionClick("Skills")}>
-                  Skills
-                </span>
-                <span
-                  className={`py-[10px] px-[22px] rounded-[10px] pointer ${
-                    activeSection === "Projects" ? "bg-red-500 text-white" : ""
-                  }`}
-                  onClick={() => handleSectionClick("Projects")}>
-                  Projects
-                </span>
-                <span
-                  className={`py-[10px] px-[22px] rounded-[10px] pointer ${
-                    activeSection === "Contact" ? "bg-red-500 text-white" : ""
-                  }`}
-                  onClick={() => handleSectionClick("Contact")}>
-                  Contact
-                </span>
-              </section>
-              <section id="mode">
-                <div className="bg-[#F5F5F5] px-[5px] py-[5px] rounded-full ">
-                  <Sun />
-                </div>
+                className="gap-2 font-poppins text-[20px] flex flex-col translate-y-[10%] h-full"
+              >
+                {["Home", "About", "Skills", "Projects", "Contact"].map(
+                  (section) => (
+                    <a
+                      href={`#${section}`}
+                      key={section}
+                      className={`py-[10px] px-[22px] pointer text-center ${
+                        active === section ? "bg-red-500 " : ""
+                      }`}
+                      onClick={() => {
+                        setActive(section);
+                        setOpen(false);
+                      }}
+                    >
+                      {section}
+                    </a>
+                  )
+                )}
               </section>
             </div>
+            <div className="z-[10]">
+              <ChevronUp className="size-[40px] pointer" onClick={toggleMenu} />
+            </div>
           </div>
-        </section>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
