@@ -33,9 +33,9 @@ export default function Menu() {
     <div className="center">
       <div className="container">
         <div className="flex justify-between items-center">
-          <Link href={`#Home`}>
+          <a href={`#Home`}>
             <Logo className="w-[40px] h-[40px]" />
-          </Link>
+          </a>
           {/* Desktop Navigation */}
           <section
             id="menu"
@@ -61,7 +61,7 @@ export default function Menu() {
             <div className="flex lg:hidden items-center ">
               <MenuBar className="size-[30px]" onClick={toggleMenu} />
             </div>
-            <button
+            <span
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="px-[10px] py-[10px] rounded-full rotate-out-center"
             >
@@ -70,7 +70,7 @@ export default function Menu() {
               ) : (
                 <Moon className="size-[30px] rotate-in-center" />
               )}
-            </button>
+            </span>
           </div>
         </div>
         {/* Mobile Navigation */}

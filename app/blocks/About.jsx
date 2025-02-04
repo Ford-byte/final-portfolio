@@ -57,7 +57,7 @@ export default function Contact() {
                   <a
                     href="/profile.png"
                     download
-                    className="px-[15px] py-[16px] bg-primary font-[700] w-fit rounded-lg pointer"
+                    className="px-[15px] py-[16px] bg-primary font-[700] w-fit rounded-lg pointer text-white"
                   >
                     DOWNLOAD CV
                   </a>
