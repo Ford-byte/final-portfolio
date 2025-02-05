@@ -73,7 +73,7 @@ export default function Banner() {
               </div>
             </div>
             <div className="lg:flex hidden">
-              <Logo className="size-[350px] text " />
+              <Logo className="size-[350px] text kenburns-bottom" />
             </div>
           </div>
         </div>

@@ -100,7 +100,7 @@ export default function Menu() {
                 )}
               </section>
               <div
-                className="z-[10] -translate-y-[100%] w-full flex justify-center bg-gray-500/20 py-[6px]"
+                className="z-[10] w-full flex justify-center bg-gray-500/20 py-[6px]"
                 onClick={toggleMenu}
               >
                 <ChevronUp

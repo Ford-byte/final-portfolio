@@ -10,7 +10,7 @@ export default function Header() {
     <header>
       <section
         id="menu-mode"
-        className="fixed w-full py-4 z-[1000] background top-0 left-0 px-[16px]"
+        className="fixed w-full py-4 z-[1000] background top-0 left-0 px-[16px] h-[80px]"
       >
         <Menu />
       </section>

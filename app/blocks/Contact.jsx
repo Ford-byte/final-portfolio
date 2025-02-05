@@ -64,7 +64,7 @@ export default function Contact() {
                       placeholder="Message"
                     ></textarea>
                   </div>
-                  <div className="w-full flex justify-between">
+                  <div className="w-full flex justify-between text-white">
                     <div>
                       <label
                         htmlFor="file-upload"

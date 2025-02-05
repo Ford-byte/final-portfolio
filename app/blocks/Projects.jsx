@@ -6,6 +6,7 @@ import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Image from "next/image";
 
 // Install the Swiper modules
 SwiperCore.use([Navigation, Pagination]);
@@ -48,7 +49,15 @@ export default function Project() {
           {[...Array(4)].map((_, index) => (
             <SwiperSlide key={index}>
               <div className="h-[400px] lg:h-[500px]">
-                <div className="w-full h-full bg-gray-200 lg:rounded-md animate-pulse"></div>
+                <div className="w-full h-full bg-gray-200 lg:rounded-md">
+                  <Image
+                    src={`/html.png`}
+                    width={1000}
+                    height={1000}
+                    alt="image"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
             </SwiperSlide>
           ))}
