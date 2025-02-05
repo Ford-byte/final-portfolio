@@ -28,8 +28,8 @@ export default function Contact() {
   }, [setActive]);
   return (
     <>
-      <div className="center slide-in-top" id="About" ref={contactRef}>
-        <div className="flex justify-center container  min-h-[700px] text">
+      <div className="center " id="About" ref={contactRef}>
+        <div className="flex justify-center container min-h-[700px] text">
           <div className=" w-full flex flex-col items-center h-full lg:max-w-[70vw] gap-y-[24px]">
             <h2 className="text-[44px] text-primary underline">About</h2>
             {/* About Section */}
@@ -57,7 +57,7 @@ export default function Contact() {
                   <a
                     href="/profile.png"
                     download
-                    className="px-[15px] py-[16px] bg-primary font-[700] w-fit rounded-lg pointer text-white"
+                    className="px-[15px] py-[16px] bg-primary font-[700] w-fit rounded-lg pointer text-white shadow-lg"
                   >
                     DOWNLOAD CV
                   </a>

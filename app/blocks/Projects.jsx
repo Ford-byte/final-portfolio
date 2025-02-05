@@ -47,7 +47,7 @@ export default function Project() {
         <Swiper spaceBetween={24} slidesPerView={1} className="w-full">
           {[...Array(4)].map((_, index) => (
             <SwiperSlide key={index}>
-              <div className="h-[400px] lg:h-[300px]">
+              <div className="h-[400px] lg:h-[500px]">
                 <div className="w-full h-full bg-gray-200 lg:rounded-md animate-pulse"></div>
               </div>
             </SwiperSlide>

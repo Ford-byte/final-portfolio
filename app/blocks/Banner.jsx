@@ -32,11 +32,7 @@ export default function Banner() {
   }, [setActive]);
 
   return (
-    <div
-      className="relative background h-full slide-in-top"
-      id="Home"
-      ref={projectRef}
-    >
+    <div className="relative background h-full" id="Home" ref={projectRef}>
       <div className="center items-center min-h-[500px] lg:min-h-[700px] ">
         <div className="container px-[16px]">
           <div className="flex justify-center w-full lg:justify-between">
@@ -50,21 +46,30 @@ export default function Banner() {
                 </span>
                 <span>Web Developer. |</span>
               </section>
-              <span id="button">
-                <button className="px-[24px] py-[14px] lg:px-[54px] lg:py-[14px] text-[16px] lg:text-[24px] pointer bg-primary text-white w-fit h-fit rounded-lg">
+              <a id="button" href="#Contact">
+                <div className="px-[24px] py-[14px] lg:px-[54px] lg:py-[14px] text-[16px] lg:text-[24px] pointer bg-primary text-white w-fit h-fit rounded-lg shadow-lg">
                   Contact
-                </button>
-              </span>
+                </div>
+              </a>
               <div className="flex gap-[24px]">
-                <span>
+                <a
+                  href="https://www.linkedin.com/in/iyac-clifford-jay-999071346/"
+                  className="hover:scale-125 transition-transform duration-700"
+                >
                   <LinkedIn />
-                </span>
-                <span>
+                </a>
+                <a
+                  href="https://github.com/Ford-byte"
+                  className="hover:scale-125 transition-transform duration-700"
+                >
                   <Github />
-                </span>
-                <span>
+                </a>
+                <a
+                  href="https://www.facebook.com/cli.f.ford.104957"
+                  className="hover:scale-125 transition-transform duration-700"
+                >
                   <Email />
-                </span>
+                </a>
               </div>
             </div>
             <div className="lg:flex hidden">
